@@ -10,6 +10,6 @@ namespace HR.Domain.Rooms.Repository
         void AddRoomBooked(RoomBooked roomBooked);
         void UpdateRoomBooked(RoomBooked roomBooked);
         void RemoveRoomBooked(Guid id);
-        IEnumerable<RoomBooked> GetRoomBookedsByRoomId(Guid roomId);
+        IEnumerable<RoomBooked> GetRoomsBookedByRoomId(Guid roomId);
     }
 }
