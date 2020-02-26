@@ -31,7 +31,7 @@ namespace HR.Domain.Hotels.Commands
 
         public Task<bool> Handle(CreateHotelCommand message, CancellationToken cancellationToken)
         {
-            var hotel = new Hotel(message.Id, message.Name, message.Address, message.City, message.Phone, message.Stars);
+            var hotel = new Hotel(Guid.NewGuid(), message.Name, message.Address, message.City, message.Phone, message.Stars);
 
             if (!IsHotelValid(hotel))
                 return Task.FromResult(false);
