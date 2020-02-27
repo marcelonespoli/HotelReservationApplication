@@ -9,7 +9,7 @@ namespace HR.Application.Interfaces
     {
         IEnumerable<HotelViewModel> GetAll();
         HotelViewModel GetById(Guid id);
-        CreateHotelCommand CreateHotel(HotelViewModel hotelViewModel);
-        UpdateHotelCommand UpdateHotel(HotelViewModel hotelViewModel);
+        CreateHotelCommand CreateHotel(CreateHotelViewModel hotelViewModel);
+        UpdateHotelCommand UpdateHotel(UpdateHotelViewModel hotelViewModel);
     }
 }

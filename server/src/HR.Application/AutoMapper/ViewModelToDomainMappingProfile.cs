@@ -9,7 +9,7 @@ namespace HR.Application.AutoMapper
     {
         public ViewModelToDomainMappingProfile()
         {
-            CreateMap<HotelViewModel, CreateHotelCommand>()
+            CreateMap<CreateHotelViewModel, CreateHotelCommand>()
                 .ConstructUsing(c => new CreateHotelCommand(
                     c.Id,
                     c.Name,
@@ -18,7 +18,7 @@ namespace HR.Application.AutoMapper
                     c.Phone,
                     c.Stars));
 
-            CreateMap<HotelViewModel, UpdateHotelCommand>()
+            CreateMap<UpdateHotelViewModel, UpdateHotelCommand>()
                 .ConstructUsing(c => new UpdateHotelCommand(
                     c.Id,
                     c.Name,

@@ -39,27 +39,27 @@ namespace HR.Service.Api.Controllers
 
         [HttpPost]
         [Route("hotels")]
-        public IActionResult Post([FromBody] HotelViewModel hotelViewModel)
+        public IActionResult Post([FromBody] CreateHotelViewModel createHotelViewModel)
         {
             if (!IsModelStateValid())
             {
                 return Response();
             }
 
-            var hotelCommand = _hotelAppService.CreateHotel(hotelViewModel);
+            var hotelCommand = _hotelAppService.CreateHotel(createHotelViewModel);
             return Response(hotelCommand);
         }
 
         [HttpPut]
         [Route("hotels")]
-        public IActionResult Put([FromBody] HotelViewModel hotelViewModel)
+        public IActionResult Put([FromBody] UpdateHotelViewModel updateHotelViewModel)
         {
             if (!IsModelStateValid())
             {
                 return Response();
             }
 
-            var taskCommand = _hotelAppService.UpdateHotel(hotelViewModel);
+            var taskCommand = _hotelAppService.UpdateHotel(updateHotelViewModel);
             return Response(taskCommand);
         }
     }

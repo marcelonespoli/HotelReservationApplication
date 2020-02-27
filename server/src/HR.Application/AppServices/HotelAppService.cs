@@ -37,18 +37,18 @@ namespace HR.Application.AppServices
             return _mapper.Map<HotelViewModel>(hotel);
         }
 
-        public CreateHotelCommand CreateHotel(HotelViewModel hotelViewModel)
+        public CreateHotelCommand CreateHotel(CreateHotelViewModel createHotelViewModel)
         {
-            var hotel = _mapper.Map<CreateHotelCommand>(hotelViewModel);
+            var hotel = _mapper.Map<CreateHotelCommand>(createHotelViewModel);
 
             _mediatorHandler.SendCommand(hotel);
 
             return hotel;
         }                
 
-        public UpdateHotelCommand UpdateHotel(HotelViewModel hotelViewModel)
+        public UpdateHotelCommand UpdateHotel(UpdateHotelViewModel updateHotelViewModel)
         {
-            var hotel = _mapper.Map<UpdateHotelCommand>(hotelViewModel);
+            var hotel = _mapper.Map<UpdateHotelCommand>(updateHotelViewModel);
 
             _mediatorHandler.SendCommand(hotel);
 
