@@ -11,7 +11,6 @@ namespace HR.Application.AutoMapper
         {
             CreateMap<CreateHotelViewModel, CreateHotelCommand>()
                 .ConstructUsing(c => new CreateHotelCommand(
-                    c.Id,
                     c.Name,
                     c.Address,
                     c.City,

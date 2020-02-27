@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace HR.Application.ViewModels
 {
     public class CreateHotelViewModel
     {
-        public Guid Id { get; set; }
-
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
