@@ -69,7 +69,7 @@ namespace HR.Domain.Rooms.Commands
         {
             var roomBooked = new RoomBooked(message.Id, message.RoomId, message.Date);
 
-            if (!IsRoomBookedValid(roomBooked))
+            if (!IsRoomBookedValid(roomBooked, message.MessageType))
                 return Task.FromResult(false);
 
             _roomRepository.AddRoomBooked(roomBooked);
@@ -98,8 +98,16 @@ namespace HR.Domain.Rooms.Commands
             return false;
         }
 
-        private bool IsRoomBookedValid(RoomBooked roomBooked)
+        private bool IsRoomBookedValid(RoomBooked roomBooked, string messageType)
         {
+            var room = _roomRepository.GetById(roomBooked.RoomId);
+
+            if (room == null)
+            {
+                _mediator.PublishEvent(new DomainNotification(messageType, "Room not found"));
+                return false;
+            }
+
             if (roomBooked.IsValid()) return true;
 
             NotifyValidationError(roomBooked.ValidationResult);

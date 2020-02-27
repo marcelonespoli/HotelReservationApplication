@@ -13,6 +13,8 @@ namespace HR.Domain
             Id = id;
             Name = name;
             HotelId = hotelId;
+
+            RoomsBooked = new List<RoomBooked>();
         }
 
         public string Name { get; private set; }
