@@ -37,9 +37,9 @@ namespace HR.Application.AppServices
             return _mapper.Map<RoomViewModel>(room);
         }
 
-        public CreateRoomCommand CreateRoom(RoomViewModel roomViewModel)
+        public CreateRoomCommand CreateRoom(CreateRoomViewModel createRoomViewModel)
         {
-            var room = _mapper.Map<CreateRoomCommand>(roomViewModel);
+            var room = _mapper.Map<CreateRoomCommand>(createRoomViewModel);
 
             _mediatorHandler.SendCommand(room);
 
@@ -58,9 +58,9 @@ namespace HR.Application.AppServices
             return _mapper.Map<IEnumerable<RoomBookedViewModel>>(roomsBooked);
         }
 
-        public AddRoomBookedCommand AddRoomBooked(RoomBookedViewModel roomBookedViewModel)
+        public AddRoomBookedCommand AddRoomBooked(AddRoomBookedViewModel addRoomBookedViewModel)
         {
-            var roomBooked = _mapper.Map<AddRoomBookedCommand>(roomBookedViewModel);
+            var roomBooked = _mapper.Map<AddRoomBookedCommand>(addRoomBookedViewModel);
 
             _mediatorHandler.SendCommand(roomBooked);
 

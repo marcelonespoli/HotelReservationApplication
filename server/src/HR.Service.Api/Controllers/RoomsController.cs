@@ -47,14 +47,14 @@ namespace HR.Service.Api.Controllers
 
         [HttpPost]
         [Route("rooms")]
-        public IActionResult Post([FromBody] RoomViewModel roomViewModel)
+        public IActionResult Post([FromBody] CreateRoomViewModel createRoomViewModel)
         {
             if (!IsModelStateValid())
             {
                 return Response();
             }
 
-            var roomCommand = _roomAppService.CreateRoom(roomViewModel);
+            var roomCommand = _roomAppService.CreateRoom(createRoomViewModel);
             return Response(roomCommand);
         }
 
@@ -67,14 +67,14 @@ namespace HR.Service.Api.Controllers
 
         [HttpPost]
         [Route("rooms/booked")]
-        public IActionResult PostRoomBooked([FromBody] RoomBookedViewModel roomBookedViewModel)
+        public IActionResult PostRoomBooked([FromBody] AddRoomBookedViewModel addRoomBookedViewModel)
         {
             if (!IsModelStateValid())
             {
                 return Response();
             }
 
-            var roomBookedCommand = _roomAppService.AddRoomBooked(roomBookedViewModel);
+            var roomBookedCommand = _roomAppService.AddRoomBooked(addRoomBookedViewModel);
             return Response(roomBookedCommand);
         }
     }

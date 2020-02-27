@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HR.Application.Interfaces;
+﻿using HR.Application.Interfaces;
 using HR.Application.ViewModels;
 using HR.Domain.Core.Notifications;
 using HR.Domain.Interfaces;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace HR.Service.Api.Controllers
 {

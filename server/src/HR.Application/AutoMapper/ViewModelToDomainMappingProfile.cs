@@ -26,10 +26,10 @@ namespace HR.Application.AutoMapper
                     c.Phone,
                     c.Stars));
 
-            CreateMap<RoomViewModel, CreateRoomCommand>()
-                    .ConvertUsing<RoomViewModelToCreateRoomCommand>();
+            CreateMap<CreateRoomViewModel, CreateRoomCommand>()
+                    .ConvertUsing<CreateRoomViewModelToCreateRoomCommand>();
 
-            CreateMap<RoomBookedViewModel, AddRoomBookedCommand>()
+            CreateMap<AddRoomBookedViewModel, AddRoomBookedCommand>()
                 .ConstructUsing(c => new AddRoomBookedCommand(
                     c.RoomId,
                     c.Date));

@@ -7,9 +7,9 @@ using System.Linq;
 
 namespace HR.Application.AutoMapper
 {
-    class RoomViewModelToCreateRoomCommand : ITypeConverter<RoomViewModel, CreateRoomCommand>
+    class CreateRoomViewModelToCreateRoomCommand : ITypeConverter<CreateRoomViewModel, CreateRoomCommand>
     {
-        public CreateRoomCommand Convert(RoomViewModel source, CreateRoomCommand destination, ResolutionContext context)
+        public CreateRoomCommand Convert(CreateRoomViewModel source, CreateRoomCommand destination, ResolutionContext context)
         {
             var roomId = Guid.NewGuid();
             var roomsBooked = new List<AddRoomBookedCommand>();

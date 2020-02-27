@@ -1,1 +1,51 @@
-<p>room-form works!</p>
+<h2>Add Room</h2>
+
+<div *ngIf="loading" class="align-center">
+    <img width="35px" 
+         height="35px"                             
+         src="../../assets/icons/load.gif" />
+</div>
+
+<div *ngIf="showHotels() && !loading">    
+    <div class="row form-content">
+        <div class="col-xs-12 col-sm-10 col-md-8">
+            <form (submit)="save()" [formGroup]="roomForm">
+
+                <div class="hotel-dropdown">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-md-6">
+                            <div class="form-group">
+                                <label for="hotel">Hotel</label>
+                                <select class="form-control" id="hotel" formControlName="hotelId">
+                                    <option value="">select a hotel to add the room</option>
+                                    <option *ngFor="let hotel of hotels" 
+                                            [value]="hotel.id">{{ hotel.name }}</option>
+                                </select>
+                                <div *ngIf="roomForm.controls.hotelId.touched &&
+                                            roomForm.controls.hotelId.errors?.required" class="error-text">Hotel is required</div>
+                            </div> 
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" formControlName="name">
+                                <div *ngIf="roomForm.controls.name.touched &&
+                                            roomForm.controls.name.errors?.required" class="error-text">Name is required</div>
+                            </div>
+                            <div class="footer">
+                                <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+                                <button type="submit" class="btn btn-primary space-submit" [disabled]="!roomForm.valid">Submit</button>                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="message-no-hotels" *ngIf="!showHotels() && !loading">
+    There is no hotel created to add rooms.
+</div>
+
+
+

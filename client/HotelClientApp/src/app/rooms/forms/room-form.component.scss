@@ -1,0 +1,23 @@
+
+.message-no-hotels {
+    display: flex;
+    justify-content: center;
+    
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.form-content {
+    margin-top: 35px;    
+    margin-bottom: 35px; 
+
+    .footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 25px;
+
+        .space-submit {
+            margin-left: 10px;
+        }
+    }
+}
