@@ -4,9 +4,6 @@ using HR.Domain.Hotels.Events;
 using HR.Domain.Hotels.Repository;
 using HR.Domain.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

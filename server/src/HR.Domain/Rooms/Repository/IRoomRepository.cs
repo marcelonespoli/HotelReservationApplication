@@ -11,5 +11,7 @@ namespace HR.Domain.Rooms.Repository
         void UpdateRoomBooked(RoomBooked roomBooked);
         void RemoveRoomBooked(Guid id);
         IEnumerable<RoomBooked> GetRoomsBookedByRoomId(Guid roomId);
+        IEnumerable<Room> GetRoomsAvailablePerPeriod(Guid hotelId, DateTime startDate, DateTime endDate);
+        IEnumerable<Room> GetRoomsByHotelId(Guid hotelId);
     }
 }

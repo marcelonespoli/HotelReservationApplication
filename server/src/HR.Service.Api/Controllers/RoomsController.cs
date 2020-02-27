@@ -35,7 +35,15 @@ namespace HR.Service.Api.Controllers
         public RoomViewModel Get(Guid id)
         {
             return _roomAppService.GetById(id);
-        }        
+        }
+        
+
+        [HttpGet]
+        [Route("rooms/hotel/{hotelId:guid}")]
+        public IEnumerable<RoomViewModel> GetRoomsForHotel(Guid hotelId)
+        {
+            return _roomAppService.GetRoomsByHotelId(hotelId);
+        }
 
         [HttpPost]
         [Route("rooms")]

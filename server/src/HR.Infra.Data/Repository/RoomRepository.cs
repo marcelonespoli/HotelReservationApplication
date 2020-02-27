@@ -69,5 +69,33 @@ namespace HR.Infra.Data.Repository
         {
             Db.RoomsBooked.Remove(Db.RoomsBooked.Find(id));
         }
+
+        public IEnumerable<Room> GetRoomsByHotelId(Guid hotelId)
+        {
+            return Search(x => x.HotelId == hotelId);
+        }
+
+        public IEnumerable<Room> GetRoomsAvailablePerPeriod(Guid hotelId, DateTime startDate, DateTime endDate)
+        {
+            return (from h in Db.Hotels
+                         join r in Db.Rooms on h.Id equals r.HotelId
+                         where r.HotelId == hotelId
+                         select r).ToList();
+
+            //var availability = (from rb in Db.RoomsBooked
+            //                    join r in Db.Rooms on rb.RoomId equals 
+            //                    select r.Id);
+
+            //return (from h in Db.Hotels
+            //        join r in Db.Rooms on h.Id equals r.HotelId
+            //        join rb in Db.RoomsBooked on r.Id equals rb.RoomId
+            //        where h.Id == hotelId &&
+            //              r.Id != (from x in Db.RoomsBooked where x.Date.Date >= startDate.Date && x.Date.Date <= endDate.Date select x.RoomId)
+                           
+            //        group r by new { r.Id, r.Name, r.HotelId } into g
+            //        select new Room(g.Key.Id, g.Key.Name, g.Key.HotelId));
+        }
     }
 }
+
+// !(rb.Date >= startDate && rb.Date <= endDate)

@@ -65,6 +65,18 @@ namespace HR.Application.AppServices
             _mediatorHandler.SendCommand(roomBooked);
 
             return roomBooked;
-        }        
+        }
+
+        public IEnumerable<RoomViewModel> GetRoomsByHotelId(Guid hotelId)
+        {
+            var rooms = _roomRepository.GetRoomsByHotelId(hotelId);
+            return _mapper.Map<IEnumerable<RoomViewModel>>(rooms);
+        }
+
+        public IEnumerable<RoomViewModel> GetRoomsAvailablePerPeriod(Guid hotelId, DateTime startDate, DateTime endDate)
+        {
+            var rooms = _roomRepository.GetRoomsAvailablePerPeriod(hotelId, startDate, endDate);
+            return _mapper.Map<IEnumerable<RoomViewModel>>(rooms);
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace HR.Application.Interfaces
         RoomBookedViewModel GetRoomBookedById(Guid id);
         IEnumerable<RoomBookedViewModel> GetRoomsBookedByRoomId(Guid roomId);
         AddRoomBookedCommand AddRoomBooked(RoomBookedViewModel roomBookedViewModel);
-
+        IEnumerable<RoomViewModel> GetRoomsByHotelId(Guid hotelId);
+        IEnumerable<RoomViewModel> GetRoomsAvailablePerPeriod(Guid hotelId, DateTime startDate, DateTime endDate);
     }
 }
