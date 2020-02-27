@@ -19,5 +19,10 @@ namespace HR.Infra.Data.Context
             base.OnModelCreating(modelBuilder);
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=EFProviders.InMemory;Trusted_Connection=True;ConnectRetryCount=0");
+        }
+
     }
 }

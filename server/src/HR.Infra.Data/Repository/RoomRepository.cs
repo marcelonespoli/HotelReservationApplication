@@ -49,7 +49,8 @@ namespace HR.Infra.Data.Repository
         public IEnumerable<RoomBooked> GetRoomsBookedByRoomId(Guid roomId)
         {
             var sql = @"SELECT * FROM RoomsBooked RB " +
-                       "WHERE RB.RoomId = @rid";
+                       "WHERE RB.RoomId = @rid " +
+                       "ORDER BY RB.Date";
 
             return Db.Database.GetDbConnection().Query<RoomBooked>(sql, new { rid = roomId });
         }
