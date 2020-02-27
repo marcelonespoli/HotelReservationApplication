@@ -1,1 +1,57 @@
-<p>rooms works!</p>
+
+<h3>Rooms</h3>
+
+<div class="button-content">
+    <button class="btn btn-primary" routerLink="/rooms/add">Create Room</button>
+</div>
+
+<div *ngIf="loading" class="align-center">
+    <img width="35px" 
+         height="35px"                             
+         src="../../assets/icons/load.gif" />
+</div>
+
+<div *ngIf="!loading" class="room-content">
+    <div class="hotel-dropdown" *ngIf="showHotels()">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6">
+                <div class="form-group">
+                    <label for="sel1">Hotel</label>
+                    <select class="form-control" (change)="hotelChanged($event)">
+                        <option value="">select a hotel to show the rooms</option>
+                        <option *ngFor="let hotel of hotels" 
+                                [value]="hotel.id">{{ hotel.name }}</option>
+                    </select>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="roomLoading" class="align-center loading-room">
+        <img width="35px" 
+             height="35px"                             
+             src="../../assets/icons/load.gif" />
+    </div>
+
+    <div *ngIf="showRooms() && !roomLoading">  
+        <div class="align-center">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Room Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let room of rooms">
+                    <td>{{ room.name }}</td>
+                    <th></th>             
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    
+    <div *ngIf="!showRooms()" class="align-center">
+        <p>There are no rooms to show</p>
+    </div>
+</div>

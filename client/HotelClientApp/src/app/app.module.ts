@@ -4,15 +4,16 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
+import { HotelService } from './services/hotel.service';
+import { RoomService } from './services/room.service';
+import { SearchService } from './services/search.service';
 
 import { AppComponent } from './app.component';
 import { HotelsComponent } from './hotels/hotels.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { SearchesComponent } from './searches/searches.component';
 import { HotelFormComponent } from './hotels/forms/hotel-form.component';
-import { HotelService } from './services/hotel.service';
-import { RoomService } from './services/room.service';
-import { SearchService } from './services/search.service';
+import { RoomFormComponent } from './rooms/forms/room-form.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SearchService } from './services/search.service';
     HotelsComponent,
     RoomsComponent,
     SearchesComponent,
-    HotelFormComponent
+    HotelFormComponent,
+    RoomFormComponent
   ],
   imports: [
     BrowserModule,
