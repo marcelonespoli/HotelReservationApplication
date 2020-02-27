@@ -1,0 +1,45 @@
+
+<h3>Hotels</h3>
+
+<div class="button-content">
+    <button class="btn btn-primary" routerLink="/hotels/create">Create Hotel</button>
+</div>
+
+<div *ngIf="loading" class="align-center">
+    <img width="35px" 
+         height="35px"                             
+         src="../../assets/icons/load.gif" />
+</div>
+
+<div *ngIf="!loading" class="hotel-content">
+    <div *ngIf="showHotels()">  
+        <div class="align-center">
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Phone</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let hotel of hotels">
+                    <td>{{ hotel.name }}</td>
+                    <td>{{ hotel.address }}</td>
+                    <td>{{ hotel.city }}</td>
+                    <td>{{ hotel.phone }}</td>
+                    <td>
+                        <i class="glyphicon glyphicon-edit icon-size" [routerLink]="['/hotels/edit', hotel.id]"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    
+    <div *ngIf="!showHotels()" class="align-center">
+        <p>There is not hotels to show</p>
+    </div>
+</div>
