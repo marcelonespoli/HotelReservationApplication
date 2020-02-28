@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Moq" Version="4.13.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\HR.Application\HR.Application.csproj" />
+    <ProjectReference Include="..\..\src\HR.Domain\HR.Domain.csproj" />
+    <ProjectReference Include="..\..\src\HR.Infra.CrossCutting.AspNetFilters\HR.Infra.CrossCutting.AspNetFilters.csproj" />
+    <ProjectReference Include="..\..\src\HR.Infra.CrossCutting.IoC\HR.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\..\src\HR.Service.Api\HR.Service.Api.csproj" />
+  </ItemGroup>
+
+</Project>
