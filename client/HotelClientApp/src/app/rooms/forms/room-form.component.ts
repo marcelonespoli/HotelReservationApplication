@@ -51,7 +51,7 @@ export class RoomFormComponent implements OnInit {
       id: null,
       name: this.roomForm.get('name').value,
       hotelId: this.roomForm.get('hotelId').value,
-      roomBooked: []
+      roomsBooked: this.roomsBooked
     } as Room;
 
     this.serviceRoom.create(room)
@@ -60,6 +60,31 @@ export class RoomFormComponent implements OnInit {
           this.router.navigate(['/rooms']);
         }
     });
+  }
+
+  hasRoomsBooked() {
+    return this.roomsBooked && this.roomsBooked.length > 0;
+  }
+
+  addDate(date: string) {
+    if (date == '' || date == null) {
+      return;
+    }
+
+    const roomBooked = {
+      id: null,
+      roomId: null,
+      date
+    } as RoomBooked
+
+    this.roomsBooked.push(roomBooked);
+  }
+
+  removeDate(roomBooked) {
+    const index = this.roomsBooked.indexOf(roomBooked, 0);
+    if (index > -1) {
+      this.roomsBooked.splice(index, 1);
+    }
   }
 
   private getHotels() {

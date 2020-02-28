@@ -11,31 +11,62 @@
         <div class="col-xs-12 col-sm-10 col-md-8">
             <form (submit)="save()" [formGroup]="roomForm">
 
-                <div class="hotel-dropdown">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-8 col-md-6">
-                            <div class="form-group">
-                                <label for="hotel">Hotel</label>
-                                <select class="form-control" id="hotel" formControlName="hotelId">
-                                    <option value="">select a hotel to add the room</option>
-                                    <option *ngFor="let hotel of hotels" 
-                                            [value]="hotel.id">{{ hotel.name }}</option>
-                                </select>
-                                <div *ngIf="roomForm.controls.hotelId.touched &&
-                                            roomForm.controls.hotelId.errors?.required" class="error-text">Hotel is required</div>
-                            </div> 
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" formControlName="name">
-                                <div *ngIf="roomForm.controls.name.touched &&
-                                            roomForm.controls.name.errors?.required" class="error-text">Name is required</div>
-                            </div>
-                            <div class="footer">
-                                <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
-                                <button type="submit" class="btn btn-primary space-submit" [disabled]="!roomForm.valid">Submit</button>                
-                            </div>
+                <div class="form-group">
+                    <label for="hotel">Hotel</label>
+                    <select class="form-control" id="hotel" formControlName="hotelId">
+                        <option value="">select a hotel to add the room</option>
+                        <option *ngFor="let hotel of hotels" 
+                                [value]="hotel.id">{{ hotel.name }}</option>
+                    </select>
+                    <div *ngIf="roomForm.controls.hotelId.touched &&
+                                roomForm.controls.hotelId.errors?.required" class="error-text">Hotel is required</div>
+                </div> 
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" formControlName="name">
+                    <div *ngIf="roomForm.controls.name.touched &&
+                                roomForm.controls.name.errors?.required" class="error-text">Name is required</div>
+                </div>
+
+                <div class="date-content">
+                    <div class="form-group">
+                        <label for="date">Add booked dates for this room</label>
+                        <input #date type="date" class="form-control" id="date">
+                    </div>
+                    <button type="button" 
+                           class="btn btn-warning"
+                           (click)="addDate(date.value)">Add date</button>                      
+                    <div class="footer">
+                        <div *ngIf="hasRoomsBooked()" class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th>Booked date</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let booked of roomsBooked">
+                                    <td>{{ booked.date }}</td>
+                                    <td>
+                                        <i class="glyphicon glyphicon-trash icon-size"
+                                           (click)="removeDate(booked)"></i>
+                                    </td>             
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                        <div *ngIf="!hasRoomsBooked()" class="message">
+                            There is no date booked added
                         </div>
                     </div>
+                </div>
+
+
+
+                <div class="footer">
+                    <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+                    <button type="submit" class="btn btn-primary space-submit" [disabled]="!roomForm.valid">Save</button>                
                 </div>
                 
             </form>

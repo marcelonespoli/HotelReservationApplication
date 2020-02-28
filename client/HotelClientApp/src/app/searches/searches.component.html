@@ -1,1 +1,57 @@
-<p>searches works!</p>
+<h2>Search available room</h2>
+
+
+<div *ngIf="loading" class="align-center">
+    <img width="35px" 
+         height="35px"                             
+         src="../../assets/icons/load.gif" />
+</div>
+
+<div *ngIf="!loading">
+    <div class="row form-content" *ngIf="showHotels()">
+        <div class="col-xs-12 col-sm-10 col-md-8">
+            <div class="hotel-dropdown">
+                <div class="form-group ">
+                    <label for="hotel">Hotel</label>
+                    <select class="form-control" id="hotel" [(ngModel)]="hotelId">
+                        <option value="">select a hotel</option>
+                        <option *ngFor="let hotel of hotels" 
+                                [value]="hotel.id">{{ hotel.name }}</option>
+                    </select>
+                </div> 
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="date">Start date</label>
+                        <input type="date" class="form-control" id="date" [(ngModel)]="startDate">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <label for="date">End date</label>
+                        <input type="date" class="form-control" id="date" [(ngModel)]="endDate">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    <button type="button" 
+                            class="btn btn-primary" 
+                            [disabled]="!isFormValid" 
+                            (click)="search()">Search</button>                
+                </div>
+            </div>
+
+            
+
+            
+        </div> 
+    </div>
+</div>
+
+<div class="message-no-hotels" *ngIf="!showHotels() && !loading">
+    There is no hotel created to be search.
+</div>

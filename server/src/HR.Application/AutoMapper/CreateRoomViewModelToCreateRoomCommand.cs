@@ -18,7 +18,7 @@ namespace HR.Application.AutoMapper
             {
                 foreach (var item in source.RoomsBooked)
                 {
-                    var roomBooked = new AddRoomBookedCommand(roomId, item.Date);
+                    var roomBooked = new AddRoomBookedCommand(item.Date);
                     roomsBooked.Add(roomBooked);
                 }
             }

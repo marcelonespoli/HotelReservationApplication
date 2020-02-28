@@ -65,17 +65,5 @@ namespace HR.Service.Api.Controllers
             return _roomAppService.GetRoomsBookedByRoomId(roomId);
         }
 
-        [HttpPost]
-        [Route("rooms/booked")]
-        public IActionResult PostRoomBooked([FromBody] AddRoomBookedViewModel addRoomBookedViewModel)
-        {
-            if (!IsModelStateValid())
-            {
-                return Response();
-            }
-
-            var roomBookedCommand = _roomAppService.AddRoomBooked(addRoomBookedViewModel);
-            return Response(roomBookedCommand);
-        }
     }
 }

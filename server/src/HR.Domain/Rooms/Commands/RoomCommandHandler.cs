@@ -40,7 +40,7 @@ namespace HR.Domain.Rooms.Commands
             {
                 foreach (var booked in message.RoomsBooked)
                 {
-                    var roomBooked = new RoomBooked(booked.Id, booked.RoomId, booked.Date);
+                    var roomBooked = new RoomBooked(booked.Id, room.Id, booked.Date);
                     room.RoomsBooked.Add(roomBooked);
                 }
             }

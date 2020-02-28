@@ -4,9 +4,9 @@ export class Room {
     id: string;
     name: string;
     hotelId: string;
-    roomBooked: RoomBooked[];
+    roomsBooked: RoomBooked[];
 
     constructor() {
-        this.roomBooked = [];
+        this.roomsBooked = [];
     }
 }

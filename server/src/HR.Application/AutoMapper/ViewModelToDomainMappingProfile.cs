@@ -31,7 +31,6 @@ namespace HR.Application.AutoMapper
 
             CreateMap<AddRoomBookedViewModel, AddRoomBookedCommand>()
                 .ConstructUsing(c => new AddRoomBookedCommand(
-                    c.RoomId,
                     c.Date));
         }
     }
